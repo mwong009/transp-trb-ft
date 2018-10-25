@@ -8,7 +8,7 @@ before_install:
 
 # command to install dependencies
 install:
-  - pip install -r requirements.txt
+  - pip install git+https://github.com/Theano/Theano.git#egg=Theano
 
 # command to run tests
 script:
