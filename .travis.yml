@@ -8,13 +8,13 @@ before_install:
 
 # command to install dependencies
 install:
-  - pip install coverage
+  - pip install coverage codecov
   - pip install git+https://github.com/Theano/Theano.git#egg=Theano
 
 # command to run tests
 script:
   - python tests/test_cycle.py
-  - coverage run tests.py
+  - coverage run tests/test_cycle.py
   
 after_success:
   - codecov
