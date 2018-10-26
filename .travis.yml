@@ -8,7 +8,6 @@ before_install:
 
 # command to install dependencies
 install:
-  - pip install codecov
   - pip install git+https://github.com/Theano/Theano.git#egg=Theano
 
 # command to run tests
@@ -16,4 +15,4 @@ script:
   - python tests/test_cycle.py
   
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
