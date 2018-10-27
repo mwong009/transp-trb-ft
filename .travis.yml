@@ -8,8 +8,8 @@ before_install:
 
 # command to install dependencies
 install:
-  - pip install --user coverage codecov
-  - pip install --user git+https://github.com/Theano/Theano.git#egg=Theano
+  - pip install coverage codecov
+  - pip install git+https://github.com/Theano/Theano.git#egg=Theano
 
 # command to run tests
 script:
