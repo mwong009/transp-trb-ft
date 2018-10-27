@@ -8,7 +8,7 @@ before_install:
 
 # command to install dependencies
 install:
-  - pip install coverage codecov
+  - pip install coverage codecov pytest pytest-cov
   - pip install git+https://github.com/Theano/Theano.git#egg=Theano
 
 # command to run tests
