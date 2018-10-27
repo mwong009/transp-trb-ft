@@ -13,8 +13,7 @@ install:
 
 # command to run tests
 script:
-  - pytest tests/test_unit.py
-  - coverage run --source=transptrb tests/test_unit.py
+  - pytest --cov=./ tests/test_unit.py
 
 after_success:
   - codecov
