@@ -2,19 +2,19 @@ language: python
 
 python:
   - "3.6"
-  
+
 before_install:
   - sudo apt-get install libblas-dev g++
 
 # command to install dependencies
 install:
-  - pip install coverage codecov
-  - pip install git+https://github.com/Theano/Theano.git#egg=Theano
+  - pip install --user coverage codecov
+  - pip install --user git+https://github.com/Theano/Theano.git#egg=Theano
 
 # command to run tests
 script:
-  - python tests/test_cycle.py
-  - coverage run tests/test_cycle.py
-  
+  - pytest tests/test_unit.py
+  - coverage run --source=transptrb tests/test_unit.py
+
 after_success:
   - codecov
