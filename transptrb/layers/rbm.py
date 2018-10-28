@@ -168,7 +168,7 @@ class RBM(object):
         hidden_term = T.sum(T.log(1 + T.exp(wx_b)), axis=1)
         return -hidden_term - visible_term
 
-    def get_valid_cost(self):
+    def get_valid_error(self):
 
         ph_pre, ph_mean, ph_sample = self.sample_h_given_v(self.input)
         v1_pre, v1_mean, v1_sample = self.sample_v_given_h(ph_mean)
@@ -207,6 +207,7 @@ class RBM(object):
 
         if persistent:
             gibbs_updates[persistent] = nh_samples[-1]
-            monitoring_cost = T.mean(T.sqr(self.input - chain_end))
+
+        monitoring_cost = T.mean(T.sqr(self.input - chain_end))
 
         return monitoring_cost, gibbs_updates
