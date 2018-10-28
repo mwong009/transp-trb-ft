@@ -19,6 +19,6 @@ before_script:
 test:
   script:
     - pytest --cov=transptrb
-  artifacts:
+  cache:
     paths:
-    - $CI_PROJECT_DIR/tests/.cache/
+    - $CI_PROJECT_DIR/.cache/*.pkl.gz

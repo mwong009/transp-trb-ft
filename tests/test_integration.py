@@ -25,7 +25,7 @@ class DataLoaderTest(TestCase):
     def setUp(self):
         self.dataset = os.path.join(
             os.path.split(__file__)[0],
-            ".cache/mnist.pkl.gz"
+            "../.cache/mnist.pkl.gz"
         )
         if not os.path.isfile(self.dataset):
             r = requests.get(url)
@@ -49,7 +49,7 @@ class DBNTest(TestCase):
     def setUp(self):
         dataset = os.path.join(
             os.path.split(__file__)[0],
-            ".cache/mnist.pkl.gz"
+            "../.cache/mnist.pkl.gz"
         )
         if not os.path.isfile(dataset):
             r = requests.get(url)
