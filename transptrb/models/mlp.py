@@ -35,9 +35,9 @@ class MLP(object):
                 layer_input = self.dense_layers[-1].output
 
             dense_layer = DenseLayer(
+                input=layer_input,
                 rng=self.rng,
                 theano_rng=self.theano_rng,
-                input=layer_input,
                 n_in=input_size,
                 n_out=hidden_layers_sizes[i],
                 activation=T.nnet.softplus,
