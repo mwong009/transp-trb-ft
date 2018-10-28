@@ -19,6 +19,6 @@ before_script:
 test:
   script:
     - pytest --cov=transptrb
-  cache:
+  artifacts:
     paths:
-    - .cache/data/
+    - test/.cache/
