@@ -19,4 +19,3 @@ before_script:
 test:
   script:
   - pytest --cov=transptrb
-  - codecov
