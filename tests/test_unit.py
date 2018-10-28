@@ -1,3 +1,5 @@
+import packageloader
+
 import theano
 import theano.tensor as T
 
