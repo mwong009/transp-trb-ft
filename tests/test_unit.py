@@ -54,8 +54,7 @@ class OptimizerTest(TestCase):
 
 
 class LayerTest(TestCase):
-    def __init__(self, *args, **kwargs):
-        super(LayerTest, self).__init__(*args, **kwargs)
+    def setUp(self):
         batch_size = 40
         self.n_in = 10
         self.n_out = 100
