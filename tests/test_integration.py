@@ -102,4 +102,3 @@ class DBNTest(TestCase):
 
         t, v = dbn.build_pretraining_functions(self.datasets, self.batch_size)
         t, v, s = dbn.build_finetune_functions(self.datasets, self.batch_size)
-
