@@ -48,7 +48,7 @@ class Nadam(object):
     def update(self, cost, params, learning_rate, consider_constants=None):
         grads = [T.grad(cost, param, consider_constants) for param in params]
 
-        iterations = self.iterations
+        iterations = self._iterations
         schedule = self._schedule
         ms = self._ms
         vs = self._vs

@@ -7,9 +7,9 @@ import numpy as np
 
 
 class Momentum(object):
-    def __init__(self, params, momentum=0.9, epsilon=1e-7, nesterov=False):
+    def __init__(self, params, momentum=0.9, epsilon=1e-7, nesterov=True):
         assert (momentum >= 0. and momentum < 1.)
-        assert (nesterov is True or nesterov is False)
+        assert ((nesterov is True) or (nesterov is False))
 
         self._velocity = [theano.shared(
             value=np.zeros_like(
@@ -29,12 +29,12 @@ class Momentum(object):
 
         updates = []
         for v, param, grad in zip(velocity, params, grads):
-            updates.append((v, self.momentum * v - learning_rate * grad))
-            update = updates[-1]
+            update = self.momentum * v - learning_rate * grad
+            updates.append((v, update - param))
 
-            if nesterov:
-                inc = self.momentum * update - learning_rate * grad
+            if self.nesterov:
+                update = self.momentum * update - learning_rate * grad
 
-            updates.append((param, inc))
+            updates.append((param, update))
 
         return updates

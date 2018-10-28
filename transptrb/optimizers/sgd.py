@@ -10,8 +10,8 @@ class SGD(object):
     def __init__(self, params):
         pass
 
-    def update(self, cost, params, learning_rate):
-        grads = [T.grad(cost, param) for param in params]
+    def update(self, cost, params, learning_rate, consider_constants):
+        grads = [T.grad(cost, param, consider_constants) for param in params]
 
         updates = []
         for param, grad in zip(params, grads):
