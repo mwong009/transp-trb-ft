@@ -58,13 +58,10 @@ class DenseLayer(object):
                 # else_branch=activation(
                 #   T.mean(normal_sample, axis=0) + self.b)
             )
-
             self.consider_constant = None
 
-        if (dropout is None) or (dropout == 0.):
-            self.output = output
-        else:
-            self.output = theano.ifelse.ifelse(
+        if (dropout is not None) and (dropout > 0.):
+            output = theano.ifelse.ifelse(
                 condition=T.eq(is_train, 1),
                 then_branch=T.switch(
                     theano_rng.binomial(
@@ -72,10 +69,14 @@ class DenseLayer(object):
                         p=(1.-dropout),
                         dtype=theano.config.floatX
                     ),
-                    output, 0
+                    output, 0.
                 ),
                 else_branch=output*(1.-dropout)
             )
 
+        self.output = output
+
         self.params = [self.W, self.b]
         self.input = input
+        self.n_in = n_in
+        self.n_out = n_out
