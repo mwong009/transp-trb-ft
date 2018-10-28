@@ -5,7 +5,7 @@ variables:
 
 cache:
   paths:
-    - .cache/pip/
+    - $CI_PROJECT_DIR/.cache/pip/
     - venv/
 
 before_script:
@@ -21,4 +21,4 @@ test:
     - pytest --cov=transptrb
   artifacts:
     paths:
-    - test/.cache/
+    - $CI_PROJECT_DIR/test/.cache/
