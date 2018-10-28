@@ -17,11 +17,12 @@ from layers import DenseLayer
 from optimizers import SGD, Nadam, Momentum
 from unittest import TestCase
 
+url = "http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz"
+
 
 class DataLoaderTest(TestCase):
 
     def setUp(self):
-        url = "http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz"
         self.dataset = os.path.join(
             os.path.split(__file__)[0],
             "../.cache/data/mnist.pkl.gz"
@@ -46,7 +47,6 @@ class DataLoaderTest(TestCase):
 @pytest.mark.filterwarnings('ignore::DeprecationWarning')
 class DBNTest(TestCase):
     def setUp(self):
-        url = "http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz"
         dataset = os.path.join(
             os.path.split(__file__)[0],
             "../.cache/data/mnist.pkl.gz"
