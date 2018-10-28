@@ -13,8 +13,8 @@ from unittest import TestCase
 
 
 class OptimizerTest(TestCase):
-    def __init__(self, *args, **kwargs):
-        super(OptimizerTest, self).__init__(*args, **kwargs)
+
+    def setUp(self):
         self.rng = np.random.RandomState(888)
         n_in = 10
         n_out = 100
