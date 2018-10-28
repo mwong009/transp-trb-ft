@@ -21,4 +21,4 @@ test:
     - pytest --cov=transptrb
   cache:
     paths:
-    - .cache/data
+    - test/.cache
