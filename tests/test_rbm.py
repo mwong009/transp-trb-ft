@@ -65,7 +65,7 @@ def main(base_lr=0.001, base_lr_decay=0.002, dataset='mnist.pkl.gz',
 
     validate_model = theano.function(
         inputs=[index],
-        outputs=rbm.get_valid_cost(),
+        outputs=rbm.get_valid_error(),
         givens={
             x: valid_set_x[index * batch_size: (index + 1) * batch_size],
             is_train: T.cast(0, 'int32')
