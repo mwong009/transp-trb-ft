@@ -7,7 +7,7 @@ import numpy as np
 
 
 class DenseLayer(object):
-    def __init__(self, rng, theano_rng, input, n_in, n_out, W=None, b=None,
+    def __init__(self, input, rng, theano_rng, n_in, n_out, W=None, b=None,
                  activation=None, dropout=None, dropconnect=None,
                  is_train=0):
 
@@ -80,3 +80,4 @@ class DenseLayer(object):
         self.input = input
         self.n_in = n_in
         self.n_out = n_out
+        self.is_train = is_train
