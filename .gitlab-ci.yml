@@ -1,11 +1,11 @@
 image: python:3.6
 
 variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 cache:
   paths:
-    - $CI_PROJECT_DIR/.cache/pip/
+    - .cache/pip
     - venv/
 
 before_script:
@@ -21,4 +21,4 @@ test:
     - pytest --cov=transptrb
   artifacts:
     paths:
-    - $CI_PROJECT_DIR/test/.cache/
+    - $CI_PROJECT_DIR/tests/.cache/
