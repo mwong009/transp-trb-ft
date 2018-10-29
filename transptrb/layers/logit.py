@@ -12,7 +12,7 @@ class LogisticRegression(object):
     def __init__(self, input, n_in, n_out, W=None, b=None):
 
         if W is None:
-            W = gen_param(name='W', shape=(n_in, n_out), rng=rng)
+            W = gen_param(name='W', shape=(n_in, n_out))
 
         if b is None:
             b = gen_param(name='b', shape=(n_out,))
