@@ -74,6 +74,27 @@ class RBM(object):
         self.v_activation = v_activation
         self.h_activation = h_activation
 
+    def sample(self, pre_activation, mean, dist=None):
+
+        assert dist in ['binomial', 'normal']
+
+        if dist == 'binomial':
+            sample = self.theano_rng.binomial(
+                size=pre_activation.shape,
+                n=1,
+                p=mean,
+                dtype=theano.config.floatX
+            )
+        elif dist == 'normal':
+            sample = self.theano_rng.normal(
+                size=mean.shape,
+                avg=pre_activation,
+                std=T.nnet.sigmoid(pre_activation),
+                dtype=theano.config.floatX
+            )
+
+        return sample
+
     def propup(self, v):
 
         pre_activation = T.dot(v, self.W) + self.hbias
@@ -85,31 +106,17 @@ class RBM(object):
         pre_activation, h1_mean = self.propup(v0_sample)
 
         if self.h_activation is T.nnet.sigmoid:
-            h1_sample = self.theano_rng.binomial(
-                size=h1_mean.shape,
-                n=1,
-                p=h1_mean,
-                dtype=theano.config.floatX
-            )
+            h1_sample = self.sample(pre_activation, h1_mean, 'binomial')
 
         elif self.h_activation is T.nnet.softplus:
-            normal_sample = self.theano_rng.normal(
-                size=h1_mean.shape,
-                avg=pre_activation,
-                std=T.nnet.sigmoid(pre_activation),
-                dtype=theano.config.floatX
-            )
+            normal_sample = self.sample(pre_activation, h1_mean, 'normal')
             h1_sample = T.nnet.softplus(normal_sample)
 
         if (self.dropout is not None) and (self.dropout > 0.):
             h1_sample = theano.ifelse.ifelse(
                 condition=T.eq(self.is_train, 1),
                 then_branch=T.switch(
-                    self.theano_rng.binomial(
-                        size=h1_sample.shape,
-                        p=(1.-self.dropout),
-                        dtype=theano.config.floatX
-                    ),
+                    self.sample(h1_sample, (1.-self.dropout), 'binomial'),
                     h1_sample, 0.
                 ),
                 else_branch=h1_sample*(1.-self.dropout)
@@ -128,20 +135,10 @@ class RBM(object):
         pre_activation, v1_mean = self.propdown(h0_sample)
 
         if self.v_activation is T.nnet.sigmoid:
-            v1_sample = self.theano_rng.binomial(
-                size=pre_activation.shape,
-                n=1,
-                p=v1_mean,
-                dtype=theano.config.floatX
-            )
+            v1_sample = self.sample(pre_activation, v1_mean, 'binomial')
 
         elif self.v_activation is T.nnet.softplus:
-            normal_sample = self.theano_rng.normal(
-                size=v1_mean.shape,
-                avg=pre_activation,
-                std=T.nnet.sigmoid(pre_activation),
-                dtype=theano.config.floatX
-            )
+            normal_sample = self.sample(pre_activation, v1_mean, 'normal')
             h1_sample = T.nnet.softplus(normal_sample)
 
         return[pre_activation, v1_mean, v1_sample]
