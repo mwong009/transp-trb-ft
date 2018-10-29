@@ -16,10 +16,10 @@ def load_data(dataset):
     print('... loading data')
 
     dataset = os.path.join(
-        os.path.split(__file__)[0],
-        "../data",
-        dataset
-    )
+            os.path.split(__file__)[0],
+            "../.cache",
+            dataset
+        )
 
     with gzip.open(dataset, 'rb') as f:
         try:
