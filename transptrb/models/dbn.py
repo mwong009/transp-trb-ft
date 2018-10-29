@@ -8,6 +8,7 @@ from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 import numpy as np
 
 from layers import RBM, DenseLayer, LogisticRegression
+from layers.generator import gen_param
 from optimizers import SGD
 
 

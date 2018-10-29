@@ -5,6 +5,8 @@ import theano.tensor as T
 
 import numpy as np
 
+from layers.generator import gen_param
+
 
 class LogisticRegression(object):
     def __init__(self, input, n_in, n_out, W=None, b=None):
