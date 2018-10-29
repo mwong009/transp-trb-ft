@@ -109,7 +109,7 @@ class ModelTest(TestCase):
         y = T.ivector('y')  # labels
         is_train = T.iscalar('is_train')
 
-        dbn = DBN(
+        mlp = MLP(
             input=self.input,
             output=self.output,
             n_in=self.n_in,
@@ -117,3 +117,5 @@ class ModelTest(TestCase):
             n_out=self.n_out,
             is_train=is_train
         )
+
+        mlp_output = mlp.output
