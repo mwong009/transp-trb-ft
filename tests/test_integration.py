@@ -45,7 +45,7 @@ class DataLoaderTest(TestCase):
 
 
 @pytest.mark.filterwarnings('ignore::DeprecationWarning')
-class DBNTest(TestCase):
+class ModelTest(TestCase):
     def setUp(self):
         dataset = os.path.join(
             os.path.split(__file__)[0],
@@ -102,3 +102,18 @@ class DBNTest(TestCase):
 
         t, v = dbn.build_pretraining_functions(self.datasets, self.batch_size)
         t, v, s = dbn.build_finetune_functions(self.datasets, self.batch_size)
+
+    def test_createMLP(self):
+
+        x = T.matrix('x')   # data
+        y = T.ivector('y')  # labels
+        is_train = T.iscalar('is_train')
+
+        dbn = DBN(
+            input=self.input,
+            output=self.output,
+            n_in=self.n_in,
+            hidden_layers_sizes=self.hidden_layers_sizes,
+            n_out=self.n_out,
+            is_train=is_train
+        )
