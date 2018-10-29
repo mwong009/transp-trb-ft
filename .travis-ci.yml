@@ -12,4 +12,4 @@ script:
   - pytest --cov=transptrb
 
 after_success:
-- codecov
+  - codecov
