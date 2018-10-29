@@ -10,24 +10,10 @@ class LogisticRegression(object):
     def __init__(self, input, n_in, n_out, W=None, b=None):
 
         if W is None:
-            W = theano.shared(
-                value=np.zeros(
-                    shape=(n_in, n_out),
-                    dtype=theano.config.floatX
-                ),
-                name='W',
-                borrow=True
-            )
+            W = gen_param(name='W', shape=(n_in, n_out), rng=rng)
 
         if b is None:
-            b = theano.shared(
-                value=np.zeros(
-                    shape=(n_out,),
-                    dtype=theano.config.floatX
-                ),
-                name='b',
-                borrow=True
-            )
+            b = gen_param(name='b', shape=(n_out,))
 
         self.W = W
         self.b = b

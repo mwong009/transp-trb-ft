@@ -5,6 +5,8 @@ import theano.tensor as T
 from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 
 import numpy as np
+
+from layers.generator import gen_param
 from optimizers import SGD
 
 
@@ -21,38 +23,13 @@ class RBM(object):
             theano_rng = RandomStreams(rng.randint(2 ** 30))
 
         if W is None:
-            W = theano.shared(
-                value=np.asarray(
-                    rng.uniform(
-                        low=-np.sqrt(6. / (n_visible + n_hidden)),
-                        high=np.sqrt(6. / (n_visible + n_hidden)),
-                        size=(n_visible, n_hidden)
-                    ),
-                    dtype=theano.config.floatX
-                ),
-                name='W',
-                borrow=True
-            )
+            W = gen_param(name='W', shape=(n_visible, n_hidden), rng=rng)
 
         if hbias is None:
-            hbias = theano.shared(
-                value=np.zeros(
-                    shape=(n_hidden,),
-                    dtype=theano.config.floatX
-                ),
-                name='hbias',
-                borrow=True
-            )
+            hbias = gen_param(name='hbias', shape=(n_hidden,))
 
         if vbias is None:
-            vbias = theano.shared(
-                value=np.zeros(
-                    shape=(n_visible,),
-                    dtype=theano.config.floatX
-                ),
-                name='vbias',
-                borrow=True
-            )
+            vbias = gen_param(name='vbias', shape=(n_visible,))
 
         self.W = W
         self.hbias = hbias

@@ -5,27 +5,14 @@ import theano.tensor as T
 
 import numpy as np
 
+from layers.generator import gen_param
+
 
 class LinearRegression(object):
     def __init__(self, input, n_in):
 
-        self.W = theano.shared(
-                value=np.zeros(
-                    shape=(n_in,),
-                    dtype=theano.config.floatX
-                ),
-                name='W',
-                borrow=True
-            )
-
-        self.b = theano.shared(
-                value=np.zeros(
-                    (1,),
-                    dtype=theano.config.floatX
-                ),
-                name='b',
-                borrow=True
-            )
+        self.W = gen_param(name='W', shape=(n_in,))
+        self.b = gen_param(name='b', shape=(1,))
 
         self.output = T.dot(input, self.W) + self.b
 

@@ -12,27 +12,10 @@ class DenseLayer(object):
                  is_train=0):
 
         if W is None:
-            W = theano.shared(
-                value=np.asarray(
-                    rng.uniform(
-                        low=-np.sqrt(6. / (n_in + n_out)),
-                        high=np.sqrt(6. / (n_in + n_out)),
-                        size=(n_in, n_out)
-                    ),
-                    dtype=theano.config.floatX
-                ),
-                name='W',
-                borrow=True)
+            W = gen_param(name='W', shape=(n_in, n_out), rng=rng)
 
         if b is None:
-            b = theano.shared(
-                value=np.zeros(
-                    shape=(n_out,),
-                    dtype=theano.config.floatX
-                ),
-                name='b',
-                borrow=True
-            )
+            b = gen_param(name='b', shape=(n_out,))
 
         self.W = W
         self.b = b
