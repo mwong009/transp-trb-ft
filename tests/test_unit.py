@@ -77,6 +77,5 @@ class LayerTest(TestCase):
             n_out=self.n_out,
             activation=T.nnet.softplus,
             dropout=None,
-            dropconnect=None,
             is_train=1
         )

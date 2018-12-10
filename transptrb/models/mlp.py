@@ -42,17 +42,11 @@ class MLP(object):
                 n_out=hidden_layers_sizes[i],
                 activation=T.nnet.softplus,
                 dropout=dropout,
-                dropconnect=dropconnect,
                 is_train=is_train
             )
 
             self.dense_layers.append(dense_layer)
             self.params.extend(dense_layer.params)
-
-            if dense_layer.consider_constant is None:
-                self.consider_constants = None
-            else:
-                self.consider_constants.extend(dense_layer.consider_constant)
 
         self.log_regression_layer = LogisticRegression(
             input=self.dense_layers[-1].output,
