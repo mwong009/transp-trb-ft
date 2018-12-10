@@ -12,9 +12,9 @@ import pytest
 import numpy as np
 
 from train import load_data
-from models import MLP, DBN
-from layers import DenseLayer
-from optimizers import SGD, Nadam, Momentum
+from transptrb.models import MLP, DBN
+from transptrb.layers import DenseLayer
+from transptrb.optimizers import SGD, Nadam, Momentum
 from unittest import TestCase
 
 url = "http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz"

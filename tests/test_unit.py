@@ -6,9 +6,9 @@ from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 
 import numpy as np
 
-from models import MLP
-from layers import DenseLayer
-from optimizers import SGD, Nadam, Momentum
+from transptrb.models import MLP
+from transptrb.layers import DenseLayer
+from transptrb.optimizers import SGD, Nadam, Momentum
 from unittest import TestCase
 
 

@@ -14,9 +14,9 @@ from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 
 import numpy as np
 
-from models import MLP
-from optimizers import SGD, Nadam
-from train import load_data
+from transptrb.models import MLP
+from transptrb.optimizers import SGD, Nadam
+from transptrb.train import load_data
 
 
 def main(base_lr=0.001, base_lr_decay=0.002, dataset='mnist.pkl.gz',

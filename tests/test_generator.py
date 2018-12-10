@@ -1,7 +1,7 @@
 import packageloader
 
 from unittest import TestCase
-from layers.generator import gen_param
+from transptrb.layers.generator import gen_param
 
 import numpy as np
 
