@@ -7,8 +7,8 @@ from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 
 import numpy as np
 
-from layers import DenseLayer, LogisticRegression
-from optimizers import SGD
+from ..layers import DenseLayer, LogisticRegression
+from ..optimizers import SGD
 
 
 class MLP(object):
