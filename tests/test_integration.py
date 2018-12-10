@@ -11,7 +11,7 @@ import requests
 import pytest
 import numpy as np
 
-from train import load_data
+from transptrb.train import load_data
 from transptrb.models import MLP, DBN
 from transptrb.layers import DenseLayer
 from transptrb.optimizers import SGD, Nadam, Momentum
