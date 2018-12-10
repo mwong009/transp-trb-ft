@@ -37,6 +37,8 @@ to install basic required Python libraries run:
 
 - Dec 01, 2016 is a Thursday
 
+- Extract datasets from `datasets.tar.xz`
+
 ### This is a 3 part series:
 
 Use the following to navigate
