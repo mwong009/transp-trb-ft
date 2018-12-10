@@ -6,8 +6,8 @@ from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
 
 import numpy as np
 
-from layers.generator import gen_param
-from optimizers import SGD
+from ..layers.generator import gen_param
+from ..optimizers import SGD
 
 
 class RBM(object):
