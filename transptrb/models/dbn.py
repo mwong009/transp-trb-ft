@@ -65,8 +65,6 @@ class DBN(object):
             self.rbm_layers.append(rbm_layer)
             self.params.extend(dense_layer.params)
 
-            if dense_layer.consider_constant is not None:
-                self.consider_constants.extend(dense_layer.consider_constant)
             # end-for
 
         self.logistic_layer = LogisticRegression(
