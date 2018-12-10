@@ -9,7 +9,7 @@ import numpy as np
 class Momentum(object):
     def __init__(self, params, momentum=0.9, epsilon=1e-7, nesterov=True):
         assert (momentum >= 0. and momentum < 1.)
-        assert ((nesterov is True) or (nesterov is False))
+        assert isinstance(nesterov, type(bool()))
 
         self._velocity = [theano.shared(
             value=np.zeros_like(
