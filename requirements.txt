@@ -3,4 +3,6 @@ pytest-cov
 codecov
 numpy
 scipy
+pytz
+pandas
 git+https://github.com/Theano/Theano.git#egg=Theano
