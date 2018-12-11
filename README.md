@@ -43,6 +43,6 @@ to install basic required Python libraries run:
 
 Use the following to navigate
 
-- [Part 1: data processing](processing.ipynb)
-- [Part 2: data preparation](preparation.ipynb)
-- [Part 3: model training](training.ipynb)
+- [Part 1: data processing](01_processing.ipynb)
+- [Part 2: data preparation](02_preparation.ipynb)
+- [Part 3: model training](03_training.ipynb)
