@@ -4,7 +4,7 @@ For TRBAM 2019 TRANSFOR19 Forecasting competition
 [![Build Status](https://img.shields.io/travis/mwong009/transp-trb-ft/master.svg)](https://travis-ci.org/mwong009/transp-trb-ft)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/mwong009/transp-trb-ft.svg)](https://codeclimate.com/github/mwong009/transp-trb-ft)
 [![Test Coverage](https://img.shields.io/codecov/c/github/mwong009/transp-trb-ft/master.svg)](https://codecov.io/github/mwong009/transp-trb-ft?branch=master)
-[![License](https://img.shields.io/github/license/mwong009/transp-trb-ft.svg)](https://github.com/mwong009/transp-trb-ft)
+[![License](https://img.shields.io/github/license/mwong009/transp-trb-ft.svg)](LICENSE)
 
 ### Setup and library installation
 
@@ -43,6 +43,6 @@ to install basic required Python libraries run:
 
 Use the following to navigate
 
-- [Part 1: data processing](processing.ipynb)
-- [Part 2: data preparation](preparation.ipynb)
-- [Part 3: model training](training.ipynb)
+- [Part 1: data processing](01_processing.ipynb)
+- [Part 2: data preparation](02_preparation.ipynb)
+- [Part 3: model training](03_training.ipynb)
